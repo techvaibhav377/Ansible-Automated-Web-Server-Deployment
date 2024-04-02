@@ -1,0 +1,6 @@
+#change variable as per you requirment
+
+domain_name: "example.com"
+subdomain_a: "project"
+subdomain_b: "resume"
+subdomain_c: "blogs"

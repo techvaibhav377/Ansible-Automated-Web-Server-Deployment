@@ -1,0 +1,86 @@
+
+Documentation of this Project 
+
+
+#Step 1: Directory and File Creation
+#Create Project Directory:
+#Create a directory for your Ansible project.You can name it webserver-deployment for example.
+mkdir webserver-deployment
+cd webserver-deployment
+
+#Create Directory Structure:
+#create subdirectories for organization
+mkdir -p playbooks templates
+
+
+#Create Virtual Host j2 file to deploy in webserver for subdomain:
+#Inside the templates directory, create a Jinja2 template file for the virtual host configuration. Name it virtualhost.j2:
+touch templates/virtualhost.j2
+
+
+
+
+
+#Step 2: Playbook Creation
+#Create Ansible Playbook File:
+#Inside the playbooks directory, create an Ansible playbook file. Name it web.yml:
+
+vim playbooks/web.yml
+
+#Edit Playbook File:
+
+Open the web.yml playbook file in a text editor.
+Add tasks to the playbook for deploying the web server and any other configurations needed.
+Step 3: Variable Setup
+Define Variables:
+Open the web.yml playbook file.
+Define variables at the beginning of the playbook. For example:
+yaml
+Copy code
+vars:
+  domain_name: "example.com"
+  virtual_host_template: "templates/virtualhost.j2"
+Documentation File:
+Create a documentation file (README.md) in the project root directory. This file should contain detailed instructions for setting up the web server deployment using Ansible, including explanations of the directory structure, playbook contents, and variable setup.
+
+Here's a sample structure for the README.md file:
+
+markdown
+Copy code
+# Web Server Deployment with Ansible
+
+This project demonstrates how to deploy a web server using Ansible playbook.
+
+## Directory Structure
+
+- `playbooks`: Contains Ansible playbook files.
+- `templates`: Contains Jinja2 template files.
+
+## Playbook
+
+The main Ansible playbook file is `playbooks/web.yml`. It contains tasks for deploying the web server and configuring virtual hosts.
+
+## Variables
+
+- `domain_name`: Specifies the domain name for the web server.
+- `virtual_host_template`: Specifies the path to the Jinja2 template file for virtual host configuration.
+
+## Usage
+
+1. Clone the repository to your local machine.
+2. Navigate to the project directory.
+3. Run the Ansible playbook using the following command:
+ansible-playbook playbooks/web.yml
+
+css
+Copy code
+
+## Conclusion
+
+This project provides a structured approach to deploying a web server using Ansible. Adjustments can be made to the playbook and variables as needed for specific environments.
+Ensure to update the documentation file with accurate information and instructions specific to your project.
+
+
+
+
+

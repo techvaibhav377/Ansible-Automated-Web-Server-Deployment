@@ -1,0 +1,23 @@
+<VirtualHost *:80>
+    ServerName {{ domain_name }}
+    DocumentRoot /var/www/html
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName {{ subdomain_a + '.' + domain_name }}
+    DocumentRoot /var/www/{{ subdomain_a }}
+    
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName {{ subdomain_b + '.' + domain_name }}
+    DocumentRoot /var/www/{{ subdomain_b }}
+   
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName {{ subdomain_c + '.' + domain_name }}
+    DocumentRoot /var/www/{{ subdomain_c }}
+    
+</VirtualHost>
+

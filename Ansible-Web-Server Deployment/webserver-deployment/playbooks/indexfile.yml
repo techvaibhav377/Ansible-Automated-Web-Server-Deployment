@@ -1,0 +1,36 @@
+---
+- name: Copy directory to remote server
+  hosts: all #you can add a group where your webserver is running
+  become: true #if you are working with sudo userr
+  tasks:
+    - name: Copy directory from control node to remote server
+      copy:
+        src: (path where your respective content folder is located for main domain)
+        dest: /var/www/html/
+        remote_src: yes
+        force: yes
+    - name: Copy index.html to Subdomain A
+      copy:
+        src: /path/to/local/index.html  # Path to the local index.html file
+        dest: "/var/www/{{ subdomain_a }}/index.html"
+
+    - name: Copy index.html to Subdomain B
+      copy:
+        src: /path/to/local/index.html  # Path to the local index.html file
+        dest: "/var/www/{{ subdomain_b }}/index.html"
+
+    - name: Copy index.html to Subdomain C
+      copy:
+        src: /path/to/local/index.html  # Path to the local index.html file
+        dest: "/var/www/{{ subdomain_c }}/index.html"
+        
+      notify 
+        - restart httpd
+      
+  handlers:
+      - name: restart httpd
+        service:  
+            name: httpd
+            state: present
+
+

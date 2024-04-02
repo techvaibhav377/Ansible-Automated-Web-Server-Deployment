@@ -1,0 +1,24 @@
+---
+- name: Web Server Deployment
+  hosts: all
+  vars_files:
+    - "../vars.yml"
+  tasks:
+    - name: Install apache webservr for rpm based OS
+      yum: 
+        name: httpd
+  	    state: present         
+
+    - name: Create directory for Subdomain A
+      file:
+        path: "/var/www/{{ item }}"
+        state: directory
+      loop: "{{ [subdomain_a, subdomain_b, subdomain_c] }}"
+      become: true
+
+    - name: Add virtual host files for subdomains
+      template:
+        src: ../template/virtualhost.j2  #your j2 file path 
+        dest: "/etc/httpd/conf.d/{{ domain_name }}.conf"
+      
+      
